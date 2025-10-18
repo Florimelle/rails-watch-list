@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'movies/index'
+  get 'movies/new'
+  get 'movies/create'
+  get 'movies/show'
+  get 'movies/update'
+  get 'movies/delete'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,5 +17,8 @@ Rails.application.routes.draw do
     resources :bookmarks, only: %i[new create]
   end
 
+  resources :movies do
+    resources :bookmarks, only: %i[new create]
+  end
   resources :bookmarks, only: %i[destroy]
 end
